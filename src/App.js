@@ -2,6 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './Component/login';
 import Register from './Component/Registre';
+import BasicFilterDemo from './Component/ListDemand';
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute';
+import BasicDemo from './Component/ListDemand';
+import DemandList from './Component/ListDemand';
 
 function App() {
 
@@ -15,7 +20,7 @@ function App() {
       return null; // Don't render the header on the login page
     }
   
-    return <NavBar/>;
+    return null;
   }
 
   return (
@@ -26,7 +31,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
+        <Route path="/ListDemande" element={<DemandList />} />
+ 
         <Route element={<ProtectedRoute />} >
          
 
