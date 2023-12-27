@@ -129,7 +129,7 @@ class Login extends Component {
                     }}
                   />
 
-                  <p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <a href="#!" className="link-danger">Register</a></p>
+                  <p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <a href="/register" className="link-danger">Register</a></p>
                 </div>
 
               </Form>
