@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.custom-button {
+  color: white;
+  border-color: transparent;
+}
+
+.custom-button.p-button-danger {
+  background-color: red;
+}
+
+.custom-button.p-button-success {
+  background-color: green;
+}
