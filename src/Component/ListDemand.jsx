@@ -5,6 +5,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import axios from 'axios';
 import '../App.css';
 import { Padding } from '@mui/icons-material';
+import Header from './Header';
 
 const DemandList = () => {
     const [demandes, setDemandes] = useState([]);
@@ -95,6 +96,7 @@ const DemandList = () => {
 
     return (
         <div>
+        <Header/>
             <Typography variant="h4" className="mb-4">Liste des demandes</Typography>
 
             <TextField
