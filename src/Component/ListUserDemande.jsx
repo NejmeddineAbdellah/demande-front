@@ -5,6 +5,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import axios from 'axios';
 import '../App.css';
 import authService from "../services/auth.service";
+import Header from './Header';
 
 const DemandUser = () => {
     const [demandes, setDemandes] = useState([]);
@@ -46,6 +47,8 @@ const DemandUser = () => {
 
     return (
         <div>
+                <Header/>
+
             <Typography variant="h4" className="mb-4">Liste des demandes</Typography>
 
             <TextField
