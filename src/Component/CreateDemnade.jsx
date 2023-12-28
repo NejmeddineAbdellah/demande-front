@@ -22,23 +22,27 @@ export const Demandes = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const username = authService.getCurrentUser();
+    const userConnecterId =   localStorage.getItem('usernameId');
 
     axios.post("http://localhost:8060/api/demande/save",{
       titre: titre,
       comite: comite,
       type: type,
-      dateDebut: dateDebut,
-      dateFin:dateFin,
+      date_debut: dateDebut,
+      date_fin:dateFin,
       description: description,
       besoins:besoins,
+      user: { id: userConnecterId }  
+      
     }).then((response) => {
       setTitre("");
       setComite("");
       setBesoins("");
       setDescription("");
       setType("");
-      navigate("/listpost");
+      setDateDebut("");
+      setDateFin("");
+      navigate("/");
     });
   };
 
