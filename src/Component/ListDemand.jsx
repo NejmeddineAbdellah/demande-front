@@ -12,15 +12,50 @@ const DemandList = () => {
     const [globalFilterValue, setGlobalFilterValue] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:8060/api/demande/all')
-            .then(response => {
-                setDemandes(response.data);
-                setFilteredDemandes(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
+        loadDemande();
     }, []);
+
+    const loadDemande = async () => {
+        axios.get('http://localhost:8060/api/demande/all')
+        .then(response => {
+            setDemandes(response.data);
+            setFilteredDemandes(response.data);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+    };
+    
+
+  
+    
+    const handleReject = (id) => (event) => {
+        event.preventDefault();
+      
+        // Rest of your code ...
+      
+        axios
+          .put(`http://localhost:8060/api/demande/reject/${id}`)
+          .then((response) => {
+            loadDemande();
+          });
+      };
+
+      const handleAccept = (id) => (event) => {
+        event.preventDefault();
+      
+        // Rest of your code ...
+      
+        axios
+          .put(`http://localhost:8060/api/demande/accept/${id}`)
+          .then((response) => {
+            loadDemande();
+          });
+      };
+      
+    
+     
+    
 
     const onGlobalFilterChange = (e) => {
         const value = e.target.value;
@@ -41,13 +76,16 @@ const DemandList = () => {
         setFilteredDemandes(filteredData);
     };
 
-    const actionBodyTemplate = () => {
+    const actionBodyTemplate = (demandeId,etat) => {
+        if (etat === 'accepted' || etat === 'rejected') {
+            return null; // Don't render the icons for accepted or rejected demands
+          }
         return (
             <div className="d-flex align-items-center justify-content-center">
-                <IconButton color="error">
+                <IconButton color="error" onClick={handleReject(demandeId)}>
                     <ClearIcon />
                 </IconButton>
-                <IconButton color="success">
+                <IconButton color="success" onClick={handleAccept(demandeId)}>
                     <CheckIcon />
                 </IconButton>
             </div>
@@ -92,7 +130,7 @@ const DemandList = () => {
                                 <TableCell>{demande.date_debut}</TableCell>
                                 <TableCell>{demande.date_fin}</TableCell>
                                 <TableCell className="align-items-center">
-    {actionBodyTemplate()}
+    {actionBodyTemplate(demande.id,demande.etat)}
 </TableCell>                            </TableRow>
                         ))}
                     </TableBody>

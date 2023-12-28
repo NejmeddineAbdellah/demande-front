@@ -55,9 +55,9 @@ class Login extends Component {
         () => {
           const user = AuthService.getCurrentUser();
           if (user.roles.includes("ROLE_ADMIN")) {
-            this.props.router.navigate("/register");
+            this.props.router.navigate("/ListDemande");
           } else {
-            this.props.router.navigate("/register");
+            this.props.router.navigate("/ListDemande");
           }
 
           window.location.reload();
