@@ -34,6 +34,7 @@ function App() {
         <Route path="/ListDemande" element={<DemandList />} />
         <Route path="/ListUserDemande" element={<DemandUser />} />
         <Route path="/CreateDemande" element={<Demandes />} />
+        <Route path="/ListUserDemande" element={<DemandUser />} />
 
 
 
