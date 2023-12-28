@@ -4,7 +4,7 @@ import Login from './Component/login';
 import Register from './Component/Registre';
 import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute';
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { Demandes } from './Component/CreateDemnade';
+import DemandList from './Component/ListDemand';
 
 function App() {
 
@@ -29,7 +29,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/demande" element={<Demandes />} />
+        <Route path="/ListDemande" element={<DemandList />} />
+
 
         <Route element={<ProtectedRoute />} >
          

@@ -9,7 +9,6 @@ import CheckButton from "react-validation/build/button";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import { withRouter } from '../common/with-router';
 import Form from "react-validation/build/form";
-import { Link } from 'react-router-dom';
 
 
 
@@ -130,9 +129,7 @@ class Login extends Component {
                     }}
                   />
 
-                  <p className="small fw-bold mt-2 pt-1 mb-2">
-                    Don't have an account? <Link to="/register" className="link-danger">Register</Link>
-                  </p>
+                  <p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <a href="/register" className="link-danger">Register</a></p>
                 </div>
 
               </Form>
