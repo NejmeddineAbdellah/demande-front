@@ -4,15 +4,17 @@ import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 import axios from 'axios';
 import '../App.css';
-import { Padding } from '@mui/icons-material';
+import authService from "../services/auth.service";
 
 const DemandUser = () => {
     const [demandes, setDemandes] = useState([]);
     const [filteredDemandes, setFilteredDemandes] = useState([]);
     const [globalFilterValue, setGlobalFilterValue] = useState('');
+    const user = authService.getCurrentUser();
+
 
     useEffect(() => {
-        axios.get('http://localhost:8060/api/demande/all')
+        axios.get('http://localhost:8060/api/demande/findbyuser/'+user.username)
             .then(response => {
                 setDemandes(response.data);
                 setFilteredDemandes(response.data);
