@@ -5,6 +5,7 @@ import Register from './Component/Registre';
 import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute';
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import DemandList from './Component/ListDemand';
+import { Demandes } from './Component/CreateDemnade';
 
 function App() {
 
@@ -30,6 +31,8 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/ListDemande" element={<DemandList />} />
+        <Route path="/CreateDemande" element={<Demandes />} />
+
 
 
         <Route element={<ProtectedRoute />} >
