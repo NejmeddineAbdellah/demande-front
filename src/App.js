@@ -32,6 +32,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/ListDemande" element={<DemandList />} />
+        <Route path="/ListUserDemande" element={<DemandUser />} />
         <Route path="/CreateDemande" element={<Demandes />} />
         <Route path="/ListUserDemande" element={<DemandUser />} />
 
