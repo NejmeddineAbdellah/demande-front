@@ -42,7 +42,7 @@ export const Demandes = () => {
       setType("");
       setDateDebut("");
       setDateFin("");
-      navigate("/ListDemande");
+      navigate("/ListUserDemande");
     });
   };
 
