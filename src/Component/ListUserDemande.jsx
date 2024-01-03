@@ -69,16 +69,23 @@
             if (!selectedDemand) {
                 return;
             }
-
+        
             const updatedDemand = { ...selectedDemand };
-
+        
             axios.put(`http://localhost:8060/api/demande/update/${selectedDemand.id}`, updatedDemand)
-                .then(response => {
+                .then(() => {
                     console.log(`Demand with id ${selectedDemand.id} updated successfully`);
-
-                    const updatedDemandes = demandes.map(demande => (demande.id === selectedDemand.id ? response.data : demande));
-                    setDemandes(updatedDemandes);
-
+        
+                    // Fetch the updated data after the update is successful
+                    axios.get('http://localhost:8060/api/demande/findbyuser/' + user.username)
+                        .then(response => {
+                            setDemandes(response.data);
+                            setFilteredDemandes(response.data);
+                        })
+                        .catch(error => {
+                            console.error('Error fetching updated data:', error);
+                        });
+        
                     setOpenModal(false);
                     setSelectedDemand(null);
                 })
@@ -86,7 +93,7 @@
                     console.error('Error updating demand:', error);
                 });
         };
-
+        
 
         const handleDelete = (demandeId) => {
             setDeleteId(demandeId);
