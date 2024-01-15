@@ -1,7 +1,6 @@
-
-import React, { useEffect, useState } from 'react';
-import { useForm } from "react-cool-form";
-
+import React, { useState } from 'react';
+import { TextField, Button, Select, MenuItem, TextareaAutosize, Typography, Container, Grid, InputLabel } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 import '../css/createdemande.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -18,8 +17,6 @@ export const Demandes = () => {
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
 
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -34,7 +31,6 @@ export const Demandes = () => {
       description: description,
       besoins: besoins,
       user: { id: userConnecterId }
-
     }).then((response) => {
       setTitre("");
       setComite("");
@@ -47,46 +43,106 @@ export const Demandes = () => {
     });
   };
 
-
   return (
     <div>
-            <Header />
+      <Header />
 
-    <div className='container'>
-      <form onSubmit={handleSubmit}>
-        <h1>Nouvelle Demande</h1>
-        <label>Titre de l'événement</label>
-        <input name="titre" id="titre" value={titre} onChange={(event) => setTitre(event.target.value)} />
-
-        <label>Description de l'événement</label>
-        <textarea name="description" id="description" value={description} onChange={(event) => setDescription(event.target.value)}></textarea>
-
-        <label>Comité d'organisation</label>
-        <input name="comite" id="comite" value={comite} onChange={(event) => setComite(event.target.value)} />
-
-        <label>Type d'événement</label>
-        <select name="type" id="type" value={type} onChange={(event) => setType(event.target.value)}>
-          <option value="competition">Compétition</option>
-          <option value="fete">Fête</option>
-        </select>
-
-        <label>Date de début</label>
-        <input type="date" name="dateDebut" id="dateDebut" value={dateDebut} onChange={(event) => setDateDebut(event.target.value)} />
-
-        <label>Date de fin</label>
-        <input type="date" name="dateFin" id="dateFin" value={dateFin} onChange={(event) => setDateFin(event.target.value)} />
-
-        <label>Besoins spécifiques</label>
-        <textarea name="besoins" id="besoins" value={besoins} onChange={(event) => setBesoins(event.target.value)}></textarea>
-
-        <button type="submit" className="btn btn-primary" style={{ width: 'auto', height: 'auto', margin: 'auto', marginTop: '10%' }}>
-          <b>Demander</b>
-        </button>
-      </form>
-
+      <Container maxWidth="md">
+        <form onSubmit={handleSubmit}>
+          <Typography variant="h4" align="center" style={{ marginBottom: '20px' }}>
+            Nouvelle Demande
+          </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Titre de l'événement"
+                variant="outlined"
+                value={titre}
+                onChange={(event) => setTitre(event.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextareaAutosize
+                rowsMin={3}
+                placeholder="Description de l'événement"
+                fullWidth
+                style={{ width: '100%', marginTop: '10px' }}
+                value={description}
+                onChange={(event) => setDescription(event.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Comité d'organisation"
+                variant="outlined"
+                value={comite}
+                onChange={(event) => setComite(event.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <InputLabel>Type d'événement</InputLabel>
+              <Select
+                fullWidth
+                value={type}
+                onChange={(event) => setType(event.target.value)}
+                label="Type d'événement"
+                variant="outlined"
+                style={{ marginTop: '10px' }}
+              >
+                <MenuItem value="">Select Type</MenuItem>
+                <MenuItem value="compétition">Compétition</MenuItem>
+                <MenuItem value="fête">Fête</MenuItem>
+                <MenuItem value="conférence">Conférence</MenuItem>
+                <MenuItem value="congrès">Congrès</MenuItem>
+              </Select>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                fullWidth
+                type="date"
+                label="Date de début"
+                variant="outlined"
+                value={dateDebut}
+                onChange={(event) => setDateDebut(event.target.value)}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                fullWidth
+                type="date"
+                label="Date de fin"
+                variant="outlined"
+                value={dateFin}
+                onChange={(event) => setDateFin(event.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextareaAutosize
+                rowsMin={3}
+                placeholder="Besoins spécifiques"
+                fullWidth
+                style={{ width: '100%', marginTop: '10px' }}
+                value={besoins}
+                onChange={(event) => setBesoins(event.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12} align="center">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                endIcon={<SendIcon />}
+                style={{ marginTop: '20px' }}
+              >
+                <b>Demander</b>
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
+      </Container>
     </div>
-    </div>
-
-
   );
 }
+
