@@ -6,7 +6,6 @@ import {
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 import CloseIcon from '@mui/icons-material/Close';
-import SendIcon from '@mui/icons-material/Send';
 import TablePagination from '@mui/material/TablePagination';
 import axios from 'axios';
 import '../App.css';

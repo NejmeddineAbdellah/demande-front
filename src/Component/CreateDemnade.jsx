@@ -4,7 +4,6 @@ import SendIcon from '@mui/icons-material/Send';
 import '../css/createdemande.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import authService from '../services/auth.service';
 import Header from './Header';
 
 export const Demandes = () => {
